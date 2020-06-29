@@ -4,7 +4,11 @@ Phmiley is a PHP library that replaces Unicode emojis in UTF8 strings with graph
 
 ## Installation
 
-Use as a Composer package or require the files from the src folder manually:
+Use as a Composer package
+
+`composer require 48design/phmiley`
+
+or require the files from the src folder manually:
 
 ```php
 use FortyeightDesign\Phmiley\Phmiley;
