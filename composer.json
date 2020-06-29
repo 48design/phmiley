@@ -1,0 +1,19 @@
+{
+    "name": "48design/phmiley",
+    "description": "Phmiley replaces Unicode emojis in UTF8 strings with graphics.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Constantin Groß",
+            "email": "cg@48design.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"FortyeightDesign\\Phmiley\\": "src/"}
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    }
+}
