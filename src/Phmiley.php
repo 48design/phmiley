@@ -1,6 +1,8 @@
 <?php
 namespace FortyeightDesign\Phmiley;
 
+require_once __DIR__ . '/PhmileyTree.php';
+
 class Phmiley
 {
   private $unicodeVersion = '13.0';
