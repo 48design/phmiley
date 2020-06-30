@@ -4,11 +4,11 @@ namespace FortyeightDesign\Phmiley;
 use RegexpTrie\RegexpTrie;
 
 /**
- * PhmileyTree
+ * PhmileyTrie
  * based on the RegexpTrie class sters/php-regexp-trie (https://github.com/sters/php-regexp-trie)
  * available under the MIT license (https://raw.githubusercontent.com/sters/php-regexp-trie/master/LICENSE)
  */
-class PhmileyTree {
+class PhmileyTrie {
     public static function union($strings = [])
     {
         return new static($strings);

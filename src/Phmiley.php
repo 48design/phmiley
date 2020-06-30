@@ -1,7 +1,7 @@
 <?php
 namespace FortyeightDesign\Phmiley;
 
-require_once __DIR__ . '/PhmileyTree.php';
+require_once __DIR__ . '/PhmileyTrie.php';
 
 class Phmiley
 {
@@ -240,7 +240,7 @@ class Phmiley
     $this->getData($sequenceZwjUrl);
 
     $rxReplacers = array_map(function ($emojiClass) {
-      $regexpTrie = new PhmileyTree();
+      $regexpTrie = new PhmileyTrie();
       foreach ($emojiClass as $codePoints) {
         $regexpTrie->addLiteral(
           array_map(function ($singlePoint) {
