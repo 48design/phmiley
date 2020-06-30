@@ -259,7 +259,7 @@ class Phmiley
     // print $rxReplacers['Emoji']; exit;
 
     $newRegEx = 
-      '/\p{Emoji_Flag_Sequence}|\p{Emoji_Tag_Sequence}|\p{Emoji_ZWJ_Sequence}|\p{Emoji_Keycap_Sequence}|\p{Emoji_Modifier_Sequence}|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/u';
+      '/\p{Emoji_Flag_Sequence}|\p{Emoji_Tag_Sequence}|\p{Emoji_ZWJ_Sequence}|\p{Emoji_Keycap_Sequence}|\p{Emoji_Modifier_Sequence}|\p{Emoji_Presentation}|\p{Emoji}\x{FE0F}/u';
 
     foreach ($rxReplacers as $abbr => $rx) {
       $newRegEx = preg_replace("/\\\p\{{$abbr}\}/", "(?:{$rx})", $newRegEx);
