@@ -21,7 +21,7 @@ require '/path/to/phmiley/src/Phmiley.php';
 require '/path/to/phmiley/src/Exception.php';
 ```
 
-Phmiley requires at least PHP version 7.0.0 in order to run.
+Phmiley requires at least PHP version 7.1.0 in order to run.
 
 
 ## Usage
