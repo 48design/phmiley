@@ -3,4 +3,5 @@ php:
   - '7.0.0'
   - '7.4'
 install:
-  - composer install --no-dev
+  - composer remove phpunit/phpunit
+  - composer install
