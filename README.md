@@ -2,6 +2,10 @@
 
 Phmiley is a PHP library that replaces Unicode emojis in UTF8 strings with graphics.
 
+**Why is this still needed with growing cross-device Emoji support?**
+
+The creation of this library was triggered by the use case of server-side PDF creation that didn't support Emojis and displayed them as ugly rectangles. Also, Windows does not support Emoji flags natively, so you need to work around that if you want to use flags based on Unicode in your project.
+
 ## Installation
 
 Use as a Composer package
@@ -70,7 +74,7 @@ See the [Demo Code](https://48design.github.io/phmiley/demo/) for example usage.
 
 Phmiley's code itself is available under the terms of the MIT license.
 
-The code ranges are extracted from Unicode's emoji-data.txt, © 2019 Unicode®, Inc.
+The code ranges are extracted from Unicode's emoji-data.txt and other data files, © 2019 Unicode®, Inc.
 See their [Terms of Use](https://www.unicode.org/copyright.html) and [License](https://www.unicode.org/license.html) information.
 
 When using the built-in presets that request Twemoji or OpenMoji graphics, you are required to attribute that usage accordingly:
