@@ -240,15 +240,9 @@ class Phmiley
           }, explode(' ', $codePoints))
         );
       }
-      // var_dump($emojiClass);
-      // var_dump($regexpTrie->head);
-      // print stripslashes($regexpTrie->build());
-      // exit;
       
       return $this->emojiRegEx = $regexpTrie->build();
     }, $this->emojiClasses);
-
-    // print $rxReplacers['Emoji']; exit;
 
     $newRegEx = 
       '/\p{Emoji_Flag_Sequence}|\p{Emoji_Tag_Sequence}|\p{Emoji_ZWJ_Sequence}|\p{Emoji_Keycap_Sequence}|\p{Emoji_Modifier_Sequence}|\p{Emoji_Presentation}|\p{Emoji}\x{FE0F}/u';
