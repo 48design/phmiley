@@ -30,7 +30,7 @@ class Phmiley
   public $codeUppercase = false;
 
   public function __construct() {
-    $this->tagGenerator = $options['tagGenerator'] ?? array($this, 'defaultTagGenerator');
+    $this->tagGenerator = array($this, 'defaultTagGenerator');
 
     $this->setPreset('twemoji_72');
     
