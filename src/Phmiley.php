@@ -29,14 +29,10 @@ class Phmiley
   public $imgHeight = '1em';
   public $codeUppercase = false;
 
-  public function __construct($options = array()) {
+  public function __construct() {
     $this->tagGenerator = $options['tagGenerator'] ?? array($this, 'defaultTagGenerator');
 
-    $this->setPreset($options['preset'] ?? 'twemoji_72');
-
-    if (!empty($options['version']) && $options['version'] !== $this->version) {
-      $this->setVersion($options['version']);
-    }
+    $this->setPreset('twemoji_72');
     
     if (!is_dir($this->regExDataDir)) {
       mkdir($this->regExDataDir, 0755, true);
