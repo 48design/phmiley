@@ -2,8 +2,5 @@ language: php
 php:
   - '7.0.0'
   - '7.4'
-jobs:
-include:
-  - stage: Test
-    install:
-      - composer install
+install:
+  - composer install
