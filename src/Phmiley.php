@@ -240,12 +240,4 @@ class Phmiley
 
     file_put_contents($this->getRegExFilename(), $this->emojiRegEx);
   }
-
-  public function optimiseClassRanges(&$classesArray) {
-    foreach ($classesArray as &$class) {
-      PhmileyTrie::minifyRanges($class);
-    }
-
-    return $classesArray;
-  }
 }
