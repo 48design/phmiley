@@ -11,7 +11,7 @@ if (is_file(__DIR__ . '/vendor/autoload.php')) {
 
 $Phmiley = new Phmiley();
 
-$testString = 'I could eat 11️⃣ 🍕 right now! 🤤 🧎🏾‍♂️👩🏿🇪🇺';
+$testString = "I could eat 11️⃣ 🍕 right now! 🤤 🧎🏾‍♂️👩🏿🇪🇺\u{1F3C3}\u{1F3FB}\u{200D}\u{2640}\u{FE0F}🏃‍♀️";
 
 ob_start();
 ?>
