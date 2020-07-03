@@ -188,21 +188,6 @@ class Phmiley
     return $preparedLines;
   }
 
-  private function parseRange($range) {
-    $range = mb_strtoupper(trim($range));
-
-    $unicodeRange = explode('..', $range);
-    $unicodeSequence = explode(' ', $range);
-
-    if (count($unicodeSequence) > 1) {
-      return "\x{" . implode('}\x{', $unicodeSequence) . "}";
-    } else if (1 === count($unicodeRange)) {
-      return "\x{{$unicodeRange[0]}}";
-    } else {
-      return "\x{{$unicodeRange[0]}}-\x{{$unicodeRange[1]}}";
-    }
-  }
-
   private function getRegExFilename() {
     return __DIR__ . "/../regexdata/regex-{$this->unicodeVersion}.txt";
   }
@@ -236,7 +221,7 @@ class Phmiley
       foreach ($emojiClass as $codePoints) {
         $regexpTrie->addLiteral(
           array_map(function ($singlePoint) {
-            return $this->parseRange($singlePoint);
+            return ($singlePoint);
           }, explode(' ', $codePoints))
         );
       }
@@ -254,5 +239,13 @@ class Phmiley
     $this->emojiRegEx = $newRegEx;
 
     file_put_contents($this->getRegExFilename(), $this->emojiRegEx);
+  }
+
+  public function optimiseClassRanges(&$classesArray) {
+    foreach ($classesArray as &$class) {
+      PhmileyTrie::minifyRanges($class);
+    }
+
+    return $classesArray;
   }
 }
