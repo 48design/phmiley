@@ -34,10 +34,6 @@ class Phmiley
 
     $this->setPreset('twemoji_72');
     
-    if (!is_dir($this->regExDataDir)) {
-      mkdir($this->regExDataDir, 0755, true);
-    }
-
     $this->checkRegExFile();
   }
 
