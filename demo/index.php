@@ -11,7 +11,7 @@ if (is_file(__DIR__ . '/vendor/autoload.php')) {
 
 $Phmiley = new Phmiley();
 
-$testString = 'I could eat 11️⃣ 🍕 right now! 🤤 🧎🏾‍♂️👩🏿';
+$testString = 'I could eat 11️⃣ 🍕 right now! 🤤 🧎🏾‍♂️👩🏿🇪🇺';
 
 ob_start();
 ?>
@@ -193,6 +193,40 @@ $Phmiley->parse($testString);</code></pre>
 
     <?php
         $Phmiley->tagGenerator = function($data) use ($Phmiley) {
+            if (!preg_match("/[\x{1F1E6}-\x{1F1FF}]/u", $data['emoji'])) {
+                return $data['emoji'];
+            } else {
+                return $Phmiley->defaultTagGenerator($data);
+            }
+        };
+    ?>
+
+    <tr>
+        <td>
+            custom (only repalce regional indicator symbols / flags)
+            <pre><code class="php">$Phmiley->tagGenerator = function($data) use ($Phmiley) {
+    if (!preg_match("/[\x{1F1E6}-\x{1F1FF}]/u", $data['emoji'])) {
+        return $data['emoji'];
+    } else {
+        return $Phmiley->defaultTagGenerator($data);
+    }
+};
+</code></pre>
+        </td>
+        <td><p><?php
+            ob_start();
+            $Phmiley->imgBase = "./example-images/";
+            $Phmiley->imgExt = "svg";
+            $Phmiley->codeUppercase = true;
+
+            print $Phmiley->parse($testString);
+            $output = ob_get_flush();
+            print '</p><pre><code class="php">' . htmlspecialchars($output) . '</code></pre>';
+        ?></td>
+    </tr>
+
+    <?php
+        $Phmiley->tagGenerator = function($data) use ($Phmiley) {
             $code = $Phmiley->codeUppercase ? strtoupper($data['code']) : $data['code'];
             return '
 <img
@@ -206,7 +240,7 @@ $Phmiley->parse($testString);</code></pre>
 
     <tr>
         <td>
-            custom (replace images that are not found)
+            custom (replace images that are not found via JavaScript)
             <pre><code class="php">$Phmiley->tagGenerator = function($data) use ($Phmiley) {
     $code = $Phmiley->codeUppercase ? strtoupper($data['code']) : $data['code'];
     return '&lt;img
@@ -244,7 +278,7 @@ $Phmiley->parse($testString);</code></pre>
 
     <tr>
         <td>
-            custom (remove images that are not found)
+            custom (remove images that are not found via JavaScript)
             <pre><code class="php">$Phmiley->tagGenerator = function($data) use ($Phmiley) {
     $code = $Phmiley->codeUppercase ? strtoupper($data['code']) : $data['code'];
     return '&lt;img
@@ -275,12 +309,7 @@ $Phmiley->parse($testString);</code></pre>
                 return $data['emoji'];
             }
 
-            return '
-<img
-    src="' . $emojiFile . '"
-    style="height:' . ($Phmiley->imgHeight ?? '1em') . ';width:auto;vertical-align:text-bottom;"
-    >
-';        
+            return $Phmiley->defaultTagGenerator($data);
         };
     ?>
 
@@ -294,10 +323,7 @@ $Phmiley->parse($testString);</code></pre>
         return $data['emoji'];
     }
 
-    return '&lt;img
-    src="' . $emojiFile . '"
-    style="height:' . ($Phmiley->imgHeight ?? '1em') . ';width:auto;vertical-align:text-bottom;"
-    &gt;';        
+    return $Phmiley->defaultTagGenerator($data);        
 };
 </code></pre>
         </td>
