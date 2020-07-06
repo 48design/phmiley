@@ -1,7 +1,19 @@
 language: php
+
 php:
   - '7.1.0'
   - '7.4'
+
+before_install:
+- composer remove --dev phpunit/phpunit
+- composer require php-coveralls/php-coveralls
+
 install:
-  - composer remove --dev phpunit/phpunit
   - composer install
+
+script:
+- mkdir -p ./tests/logs
+- phpunit --coverage-clover ./tests/logs/clover.xml
+
+after_success:
+- php ./vendor/bin/php-coveralls -v

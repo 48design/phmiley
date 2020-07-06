@@ -1,4 +1,4 @@
-# Phmiley [![Build Status](https://travis-ci.com/48design/phmiley.svg?branch=master)](https://travis-ci.com/48design/phmiley)
+# Phmiley [![Build Status](https://travis-ci.com/48design/phmiley.svg?branch=master)](https://travis-ci.com/48design/phmiley) [![Coverage Status](https://coveralls.io/repos/github/48design/phmiley/badge.svg?branch=master)](https://coveralls.io/github/48design/phmiley?branch=master)
 
 Phmiley is a PHP library that replaces Unicode emojis in UTF8 strings with graphics.
 
